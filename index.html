@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome detector</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: white;
+            background: #333;
+        }
+        .center{
+            margin: 0 auto;
+            text-align: center;
+            font-size: 32px;
+        }
+        .center input{
+            width: 300px;
+            height: 50px;
+            font-size: 32px;
+            text-align: center;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h1>Is</h1>
+        <input type="text" name="" id="word" placeholder='The word to detect' value="Type">
+        <h1>a palindrome</h1>
+        <input type="button" value="Check" onclick="detectPalindrome()">
+        <p id="result"></p>
+    </div>
+    <script>
+        function detectPalindrome(){
+            const WORD_i = document.getElementById("word").value;
+            const RESULT_p = document.getElementById("result");
+            const letters = [];
+            let rword = "";
+            for(let i=0; i<WORD_i.length; i++){
+                letters.push(WORD_i[i]);
+            }
+            for(let i=0; i<WORD_i.length; i++){
+                rword += letters.pop();
+            }
+
+            if(rword.toLowerCase() === WORD_i.toLowerCase()){
+                return RESULT_p.innerHTML = `"${WORD_i}" is a palindrome`;
+            }else{
+                return RESULT_p.innerHTML = `"${WORD_i}" isn't a palindrome`;;
+            }
+        }
+    </script>
+</body>
+</html>
